@@ -13,7 +13,7 @@ Compared with some state-of-the-art algorithms, our method has a strong ability 
 
 ## Framework
 <p align="center">
-<img src="https://github.com/FilippoBotti/MambaST/blob/main/Figure/network.png" width="100%" height="100%">
+<img src="https://github.com/FilippoBotti/MambaST/blob/main/Figure/Mamba-arch.png" width="100%" height="100%">
 </p> 
 The overall pipeline of our StyTr^2 framework. We split the content and style images into patches, and use a linear projection to obtain image sequences. Then the content sequences added with CAPE are fed into the content transformer encoder, while the style sequences are fed into the style transformer encoder. Following the two transformer encoders, a multi-layer transformer decoder is adopted to stylize the content sequences according to the style sequences. Finally, we use a progressive upsampling decoder to obtain the stylized images with high-resolution.
 
@@ -40,9 +40,6 @@ python train.py --style_dir ../../datasets/Images/ --content_dir ../../datasets/
 ```
 
 ## Code explanation
-<p align="center">
-<img src="https://github.com/diyiiyiii/StyTR-2/blob/main/Figure/network.png" width="100%" height="100%">
-</p> 
 The full model (fig. 2(a)) can be found at [MambaST.py](pass link here). In this file you can find the whole architecture. <br>
 The Mamba Encoder/Decoder (fig. 2 (b) and fig. 2 (c)) module can be found at [mamba.py](pass link here) <br>
 Finally, our VSSM's implementation (both with a single input and with two input merged for style transfer) can be found at [mamba_arch.py](pass link here). If you want you can also find VSSM with different scans direction inside [single_direction_mamba_arch.py](pass link here) and [double_direction_mamba_arch.py](pass link here).
