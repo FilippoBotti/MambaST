@@ -13,7 +13,7 @@ Compared with some state-of-the-art algorithms, our method has a strong ability 
 
 ## Framework
 <p align="center">
-<img src="https://github.com/FilippoBotti/MambaST/blob/main/Figure/Mamba-arch.png" width="100%" height="100%">
+<img src="https://github.com/FilippoBotti/MambaST/blob/main/Figure/Mamba-Arch.png" width="100%" height="100%">
 </p> 
 The overall pipeline of our StyTr^2 framework. We split the content and style images into patches, and use a linear projection to obtain image sequences. Then the content sequences added with CAPE are fed into the content transformer encoder, while the style sequences are fed into the style transformer encoder. Following the two transformer encoders, a multi-layer transformer decoder is adopted to stylize the content sequences according to the style sequences. Finally, we use a progressive upsampling decoder to obtain the stylized images with high-resolution.
 
