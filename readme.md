@@ -16,7 +16,7 @@ Examples of generated images from our Mamba model given a style and a content im
 <p align="center">
 <img src="https://github.com/FilippoBotti/MambaST/blob/main/Figure/Mamba-Arch.png" width="100%" height="100%">
 </p> 
-*a*) Mamba-ST full architecture. It takes as input a content and a style image and generates the content image stylized as the style image. *b*) Mamba encoder with an additional skip connection (rightmost). *c*) Our Mamba-ST Decoder, which takes both style and content as input. In particular, style embeddings are shuffled before passing to ST-VSSM in order to loose spatial information, maintaining only higher level information. *d*) The inner architecture of the Base VSSM. *e*) The inner architecture of the Base 2D-SSM. *f*) Our ST-VSSM. Notably, DWConv is shared among content and style embedding. *g*) Our modified ST 2D-SSM, where the matrices $A$,$B$ and $\Delta$ are computed from the style, the input of the selective scan are the style embedding and the matrix $C$ is calculated using the content.
+a) Mamba-ST full architecture. It takes as input a content and a style image and generates the content image stylized as the style image. b) Mamba encoder with an additional skip connection (rightmost). c) Our Mamba-ST Decoder, which takes both style and content as input. In particular, style embeddings are shuffled before passing to ST-VSSM in order to loose spatial information, maintaining only higher level information. d) The inner architecture of the Base VSSM. e) The inner architecture of the Base 2D-SSM. f) Our ST-VSSM. Notably, DWConv is shared among content and style embedding. g) Our modified ST 2D-SSM, where the matrices A, B and Delta are computed from the style, the input of the selective scan are the style embedding and the matrix C is calculated using the content.
 
 ## Experiment
 ### Requirements
@@ -55,9 +55,9 @@ sh scripts/train.sh
 ```
 
 ## Code explanation
-The full model (fig. 2(a)) can be found at [MambaST.py](pass link here). In this file you can find the whole architecture. <br>
-The Mamba Encoder/Decoder (fig. 2 (b) and fig. 2 (c)) module can be found at [mamba.py](pass link here) <br>
-Finally, our VSSM's implementation (both with a single input and with two input merged for style transfer) can be found at [mamba_arch.py](pass link here). If you want you can also find VSSM with different scans direction inside [single_direction_mamba_arch.py](pass link here) and [double_direction_mamba_arch.py](pass link here).
+The full model (fig. 2(a)) can be found at [MambaST.py](https://github.com/FilippoBotti/MambaST/blob/main/models/MambaST.py). In this file you can find the whole architecture. <br>
+The Mamba Encoder/Decoder (fig. 2 (b) and fig. 2 (c)) module can be found at [mamba.py](https://github.com/FilippoBotti/MambaST/blob/main/models/mamba.py) <br>
+Finally, our VSSM's implementation (both with a single input and with two input merged for style transfer) can be found at [mamba_arch.py](https://github.com/FilippoBotti/MambaST/blob/main/models/mamba_arch.py). If you want you can also find VSSM with different scans direction inside [single_direction_mamba_arch.py](https://github.com/FilippoBotti/MambaST/blob/main/models/single_direction_mamba_arch.py) and [double_direction_mamba_arch.py](https://github.com/FilippoBotti/MambaST/blob/main/models/double_direction_mamba_arch.py).
 
 ### Reference
 If you find our work useful in your research, please cite our paper using the following BibTeX entry ~ Thank you ^ . ^. Paper Link [pdf](https://www.arxiv.org/abs/2409.10385)<br> 
