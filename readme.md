@@ -1,42 +1,57 @@
-# StyTr^2 : Image Style Transfer with Transformers（CVPR2022）
-*Authors: [Yingying Deng](https://diyiiyiii.github.io/), Fan Tang, XingjiaPan, Weiming Dong, Chongyang Ma, Changsheng Xu*
+# Mamba-ST: State Space Model for Efficient Style Transfer
+*Authors: Filippo Botti, Alex Ergasti, Leonardo Rossi, Tomaso Fontanini, Claudio Ferrari, Massimo Bertozzi and Andrea Prati*
 
-This paper is proposed to achieve unbiased image style transfer based on the transformer model. We can promote the stylization effect compared with state-of-the-art methods.
-This repository is the official implementation of [SyTr^2 : Image Style Transfer with Transformers](https://arxiv.org/abs/2105.14576).
+This repository is the official implementation of [Mamba-ST: State Space Model for Efficient Style Transfer](https://www.arxiv.org/abs/2409.10385).
+
+This paper explores a novel design of Mamba, called Mamba-ST, to perform style transfer.
 
 ## Results presentation 
 <p align="center">
 <img src="https://github.com/FilippoBotti/MambaST/blob/main/Figure/generated_images.jpg" width="90%" height="90%">
 </p>
-Compared with some state-of-the-art algorithms, our method has a strong ability to avoid content leakage and has better feature representation ability.  <br>
+Examples of generated images from our Mamba model given a style and a content image. <br>
 
 
 ## Framework
 <p align="center">
 <img src="https://github.com/FilippoBotti/MambaST/blob/main/Figure/Mamba-Arch.png" width="100%" height="100%">
 </p> 
-The overall pipeline of our StyTr^2 framework. We split the content and style images into patches, and use a linear projection to obtain image sequences. Then the content sequences added with CAPE are fed into the content transformer encoder, while the style sequences are fed into the style transformer encoder. Following the two transformer encoders, a multi-layer transformer decoder is adopted to stylize the content sequences according to the style sequences. Finally, we use a progressive upsampling decoder to obtain the stylized images with high-resolution.
-
-
+*a*) Mamba-ST full architecture. It takes as input a content and a style image and generates the content image stylized as the style image. *b*) Mamba encoder with an additional skip connection (rightmost). *c*) Our Mamba-ST Decoder, which takes both style and content as input. In particular, style embeddings are shuffled before passing to ST-VSSM in order to loose spatial information, maintaining only higher level information. *d*) The inner architecture of the Base VSSM. *e*) The inner architecture of the Base 2D-SSM. *f*) Our ST-VSSM. Notably, DWConv is shared among content and style embedding. *g*) Our modified ST 2D-SSM, where the matrices $A$,$B$ and $\Delta$ are computed from the style, the input of the selective scan are the style embedding and the matrix $C$ is calculated using the content.
 
 ## Experiment
 ### Requirements
-* python 3.6
-* pytorch 1.4.0
-* PIL, numpy, scipy
-* tqdm  <br> 
+In order to run the project please install the environment by following these commands: 
+```
+conda create -n mambast
+pip install -r requirements.txt
+conda activate mambast
+```
 
-### Testing 
-Pretrained models: [vgg-model](https://drive.google.com/file/d/1BinnwM5AmIcVubr16tPTqxMjUCE8iu5M/view?usp=sharing),  [vit_embedding](https://drive.google.com/file/d/1C3xzTOWx8dUXXybxZwmjijZN8SrC3e4B/view?usp=sharing), [decoder](https://drive.google.com/file/d/1fIIVMTA_tPuaAAFtqizr6sd1XV7CX6F9/view?usp=sharing), [Transformer_module](https://drive.google.com/file/d/1dnobsaLeE889T_LncCkAA2RkqzwsfHYy/view?usp=sharing)   <br> 
-Please download them and put them into the floder  ./experiments/  <br> 
+You can find the random images used in order to generated the results inside ./data folder.
+Please modify all the .sh files with the correct path for your checkpoints and images before 
+running the following instructions.
+
+### Evaluation 
+[Pretrained models] (https://drive.google.com/drive/folders/1pVhJFwk2f3arP7zUDFAe5_PJrPSG1gc2?usp=drive_link) <br> 
 ```
-python test.py  --content_dir input/content/ --style_dir input/style/    --output out
+sh scripts/eval.sh
+# Before executing evalution code in order to calculate the metrics,
+# please duplicate the content and style images to match the number of stylized images first. 
+# (40 styles, 20 contents -> 800 style images, 800 content images)
+python evaluation/copy_inputs.py --cnt PATH_FOR_CONTENT_IMAGES --sty PATH_FOR_STYLE_IMAGES
+sh evaluation/eval.sh
 ```
+
+### Testing
+```
+sh scripts/test.sh
+```
+
 ### Training  
 Style dataset is WikiArt collected from [WIKIART](https://www.wikiart.org/)  <br>  
 content dataset is COCO2014  <br>  
 ```
-python train.py --style_dir ../../datasets/Images/ --content_dir ../../datasets/train2014 --save_dir models/ --batch_size 8
+sh scripts/train.sh
 ```
 
 ## Code explanation
@@ -45,12 +60,20 @@ The Mamba Encoder/Decoder (fig. 2 (b) and fig. 2 (c)) module can be found at [ma
 Finally, our VSSM's implementation (both with a single input and with two input merged for style transfer) can be found at [mamba_arch.py](pass link here). If you want you can also find VSSM with different scans direction inside [single_direction_mamba_arch.py](pass link here) and [double_direction_mamba_arch.py](pass link here).
 
 ### Reference
-If you find our work useful in your research, please cite our paper using the following BibTeX entry ~ Thank you ^ . ^. Paper Link [pdf](https://arxiv.org/abs/2105.14576)<br> 
+If you find our work useful in your research, please cite our paper using the following BibTeX entry ~ Thank you ^ . ^. Paper Link [pdf](https://www.arxiv.org/abs/2409.10385)<br> 
+
+
 ```
-@inproceedings{deng2021stytr2,
-      title={StyTr^2: Image Style Transfer with Transformers}, 
-      author={Yingying Deng and Fan Tang and Weiming Dong and Chongyang Ma and Xingjia Pan and Lei Wang and Changsheng Xu},
-      booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-      year={2022},
+@misc{botti2024mambaststatespacemodel,
+      title={Mamba-ST: State Space Model for Efficient Style Transfer}, 
+      author={Filippo Botti and Alex Ergasti and Leonardo Rossi and Tomaso Fontanini and Claudio Ferrari and Massimo Bertozzi and Andrea Prati},
+      year={2024},
+      eprint={2409.10385},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2409.10385}, 
 }
 ```
+
+### Acknowledgments
+Our code is inspired by [StyTR-2](https://github.com/diyiiyiii/StyTR-2) and [StyleID](https://github.com/jiwoogit/StyleID).
