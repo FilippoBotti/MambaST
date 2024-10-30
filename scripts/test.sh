@@ -1,4 +1,3 @@
-cd projects/MambaST/;
 
 python main.py  --mode test --style_dir data/sty --content_dir data/cnt     \
                 --vgg checkpoints/vgg_normalised.pth \

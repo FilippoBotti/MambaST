@@ -1,4 +1,3 @@
-cd projects/MambaST/;
 
 python main.py --model_name mambast --style_dir datasets/wikiart/ --content_dir datasets/train2014  \
                 --vgg checkpoints/vgg_normalised.pth --print_every 1000 \
