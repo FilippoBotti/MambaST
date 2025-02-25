@@ -64,14 +64,13 @@ If you find our work useful in your research, please cite our paper using the fo
 
 
 ```
-@misc{botti2024mambaststatespacemodel,
-      title={Mamba-ST: State Space Model for Efficient Style Transfer}, 
-      author={Filippo Botti and Alex Ergasti and Leonardo Rossi and Tomaso Fontanini and Claudio Ferrari and Massimo Bertozzi and Andrea Prati},
-      year={2024},
-      eprint={2409.10385},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2409.10385}, 
+@InProceedings{Botti_2025_WACV,
+    author    = {Botti, Filippo and Ergasti, Alex and Rossi, Leonardo and Fontanini, Tomaso and Ferrari, Claudio and Bertozzi, Massimo and Prati, Andrea},
+    title     = {Mamba-ST: State Space Model for Efficient Style Transfer},
+    booktitle = {Proceedings of the Winter Conference on Applications of Computer Vision (WACV)},
+    month     = {February},
+    year      = {2025},
+    pages     = {7786-7795}
 }
 ```
 
