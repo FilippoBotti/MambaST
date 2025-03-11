@@ -31,7 +31,7 @@ Please modify all the .sh files with the correct path for your checkpoints and i
 running the following instructions.
 
 ### Evaluation 
-[Pretrained models] (https://drive.google.com/drive/folders/1pVhJFwk2f3arP7zUDFAe5_PJrPSG1gc2?usp=drive_link) <br> 
+[Pretrained models](https://drive.google.com/drive/folders/1pVhJFwk2f3arP7zUDFAe5_PJrPSG1gc2?usp=drive_link) <br> 
 ```
 sh scripts/eval.sh
 # Before executing evalution code in order to calculate the metrics,
