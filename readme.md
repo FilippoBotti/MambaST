@@ -1,8 +1,7 @@
 # Mamba-ST: State Space Model for Efficient Style Transfer (WACV 2025)
 *Authors: Filippo Botti, Alex Ergasti, Leonardo Rossi, Tomaso Fontanini, Claudio Ferrari, Massimo Bertozzi and Andrea Prati*
 
-This repository is the official implementation of [Mamba-ST: State Space Model for Efficient Style Transfer](https://www.arxiv.org/abs/2409.10385).
-
+This repository is the official implementation of [Mamba-ST: State Space Model for Efficient Style Transfer](https://openaccess.thecvf.com/content/WACV2025/papers/Botti_Mamba-ST_State_Space_Model_for_Efficient_Style_Transfer_WACV_2025_paper.pdf).
 This paper explores a novel design of Mamba, called Mamba-ST, to perform style transfer.
 
 ## Results presentation 
