@@ -66,12 +66,15 @@ If you find our work useful in your research, please cite our paper using the fo
 
 ```
 @inproceedings{botti2025mamba,
-  title={Mamba-st: State space model for efficient style transfer},
   author={Botti, Filippo and Ergasti, Alex and Rossi, Leonardo and Fontanini, Tomaso and Ferrari, Claudio and Bertozzi, Massimo and Prati, Andrea},
-  booktitle={2025 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
-  pages={7797--7806},
+  booktitle={2025 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)}, 
+  title={Mamba-ST: State Space Model for Efficient Style Transfer}, 
   year={2025},
-  organization={IEEE}
+  volume={},
+  number={},
+  pages={7797-7806},
+  keywords={Measurement;Fuses;Computational modeling;Memory management;Transformers;Diffusion models;Mathematical models;State-space methods;Time complexity;Streams;mamba;style transfer;state space model},
+  doi={10.1109/WACV61041.2025.00757}
 }
 ```
 
